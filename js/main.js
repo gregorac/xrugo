@@ -24,4 +24,8 @@ window.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+
+  if (typeof initializeSearch === 'function') {
+    initializeSearch();
+  }
 });
