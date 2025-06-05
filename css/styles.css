@@ -1,8 +1,11 @@
 /* Base Styles */
 body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem; }
+nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem; background:#eee; }
 nav ul { list-style: none; display: flex; gap: 1rem; }
 nav .hamburger { display: none; }
+nav .logo {
+  height: 50px;
+}
 .search-wrapper { position: relative; }
 #search-suggestions { position: absolute; background: #fff; list-style:none; border:1px solid #ccc; width: 200px; }
 .banner { background-size: cover; color: #fff; padding: 2rem; text-align: center; }
