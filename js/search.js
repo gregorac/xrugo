@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { title: 'Produkte',         url: 'produkte.html',         keywords: 'hubtisch modelle fe f-ce' },
     { title: 'Partner',          url: 'partner.html',          keywords: 'partnerfirmen' },
     { title: 'Über uns',         url: 'ueber-uns.html',        keywords: 'geschichte philosophie werte tirugo' },
+    { title: 'Datenschutz',      url: 'datenschutz.html',     keywords: 'privacy policy' },
     { title: 'Online Beratung',  url: 'online-beratung.html',  keywords: 'online beratung' },
     { title: 'FAQ',              url: 'faq.html',              keywords: 'häufig gestellte fragen' },
     { title: 'Login',            url: 'login.html',            keywords: 'login portal' }
