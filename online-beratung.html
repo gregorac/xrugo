@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xirugo AG – Online Beratung</title>
+    <meta name="description" content="Unser Online-Beratungsservice für Ihre Fragen.">
+    <link rel="canonical" href="/online-beratung.html">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/main.js" defer></script>
+    <script src="js/search.js" defer></script>
+</head>
+<body>
+<!-- HEADER -->
+<header>
+    <nav aria-label="Hauptnavigation">
+        <a href="index.html"><img src="assets/logo-1.webp" alt="Xirugo Logo" loading="eager"></a>
+        <button class="hamburger" aria-controls="nav-list" aria-expanded="false">☰</button>
+        <ul id="nav-list" class="nav-list">
+            <li><a href="produkte.html">Produkte</a></li>
+            <li><a href="partner.html">Partner</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a href="online-beratung.html">Online Beratung</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+        <div class="search-wrapper">
+            <input type="text" id="site-search" placeholder="Seite durchsuchen…" role="combobox" aria-autocomplete="list" aria-owns="search-suggestions" aria-expanded="false">
+            <ul id="search-suggestions" role="listbox" aria-expanded="false"></ul>
+        </div>
+    </nav>
+</header>
+
+<!-- ONLINE BERATUNG -->
+<section class="banner" style="background-image:url('assets/empack_1.webp')">
+    <h1>Online Beratung</h1>
+</section>
+<section class="beratung">
+    <div class="form">
+        <form id="beratung-form" novalidate>
+            <label for="name">Name</label>
+            <input type="text" id="name" required aria-required="true">
+            <span class="error" id="error-name" role="alert"></span>
+            <label for="email">E-Mail</label>
+            <input type="email" id="email" required aria-required="true">
+            <span class="error" id="error-email" role="alert"></span>
+            <label for="company">Unternehmen</label>
+            <input type="text" id="company">
+            <label for="subject">Betreff</label>
+            <input type="text" id="subject">
+            <label for="message">Nachricht</label>
+            <textarea id="message"></textarea>
+            <button type="submit">Absenden</button>
+            <span class="success" id="success-message" role="alert"></span>
+        </form>
+    </div>
+    <div class="kontakt">
+        <p>Telefon: +41 00 000 00 00</p>
+        <p>E-Mail: info@xirugo.ch</p>
+        <p>Servicezeiten: 08:00 – 17:00</p>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <ul class="quicklinks">
+        <li><a href="produkte.html">Produkte</a></li>
+        <li><a href="partner.html">Partner</a></li>
+        <li><a href="ueber-uns.html">Über uns</a></li>
+        <li><a href="online-beratung.html">Online Beratung</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="login.html">Login</a></li>
+    </ul>
+    <p>&copy; 2024 Xirugo AG</p>
+</footer>
+<script>
+// einfache Formularvalidierung
+const form = document.getElementById('beratung-form');
+form.addEventListener('submit', e => {
+    e.preventDefault();
+    let valid = true;
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    document.getElementById('error-name').textContent = '';
+    document.getElementById('error-email').textContent = '';
+    if (!name.value.trim()) {
+        document.getElementById('error-name').textContent = 'Bitte geben Sie Ihren Namen ein.';
+        valid = false;
+    }
+    if (!email.value.trim() || !email.value.includes('@')) {
+        document.getElementById('error-email').textContent = 'Ungültige E-Mail-Adresse.';
+        valid = false;
+    }
+    if (valid) {
+        document.getElementById('success-message').textContent = 'Vielen Dank für Ihre Anfrage. Wir melden uns in Kürze.';
+        form.reset();
+    }
+});
+</script>
+</body>
+</html>
