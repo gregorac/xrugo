@@ -306,7 +306,7 @@ Erstelle eine wiederverwendbare Footer-Struktur:
     <div class="footer-column">
       <h3>Kontakt</h3>
       <address>
-        Xirugo AG<br>
+        Tirugo AG<br>
         Musterstraße 12<br>
         8000 Zürich, Schweiz<br>
         Telefon: +41 44 123 45 67<br>
@@ -342,7 +342,7 @@ Erstelle eine wiederverwendbare Footer-Struktur:
   </div>
   <hr class="footer-divider">
   <div class="footer-bottom">
-    <p>© 2025 Xirugo AG – Alle Rechte vorbehalten.</p>
+    <p>© 2025 Tirugo AG – Alle Rechte vorbehalten.</p>
   </div>
 </footer>
 ```
@@ -464,7 +464,7 @@ Erstelle eine wiederverwendbare Footer-Struktur:
 
 3. **Canonical-Link**  
    ```html
-   <link rel="canonical" href="https://xirugo.ch/[dateiname].html">
+   <link rel="canonical" href="https://tirugo.ch/[dateiname].html">
    ```
 
 4. **Strukturierte Daten (JSON-LD)**  
@@ -474,9 +474,9 @@ Erstelle eine wiederverwendbare Footer-Struktur:
      {
        "@context": "https://schema.org",
        "@type": "Organization",
-       "name": "Xirugo AG",
-       "url": "https://xirugo.ch",
-       "logo": "https://xirugo.ch/assets/logo-1.webp",
+       "name": "Tirugo AG",
+       "url": "https://tirugo.ch",
+       "logo": "https://tirugo.ch/assets/logo-1.webp",
        "contactPoint": [{
          "@type": "ContactPoint",
          "telephone": "+41 44 123 45 67",
@@ -499,10 +499,10 @@ Erstelle eine wiederverwendbare Footer-Struktur:
      {
        "@context": "https://schema.org",
        "@type": "WebSite",
-       "url": "https://xirugo.ch",
+       "url": "https://tirugo.ch",
        "potentialAction": {
          "@type": "SearchAction",
-         "target": "https://xirugo.ch/[dateiname].html?s={search_term_string}",
+         "target": "https://tirugo.ch/[dateiname].html?s={search_term_string}",
          "query-input": "required name=search_term_string"
        }
      }
@@ -938,7 +938,7 @@ Implementiere eine clientseitige Volltextsuche, die alle relevanten Texte einer 
 
 3. **Canonical-Links**  
    ```html
-   <link rel="canonical" href="https://xirugo.ch/[dateiname].html">
+   <link rel="canonical" href="https://tirugo.ch/[dateiname].html">
    ```
 
 4. **Strukturierte Daten**  
