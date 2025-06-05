@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xirugo AG – Login</title>
+    <meta name="description" content="Login zur Website der Xirugo AG.">
+    <link rel="canonical" href="/login.html">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/main.js" defer></script>
+    <script src="js/search.js" defer></script>
+</head>
+<body>
+<!-- HEADER -->
+<div id="site-header"></div>
+
+<!-- LOGIN -->
+<section class="banner" style="background-image:url('assets/empack_1.webp')">
+    <h1>Login</h1>
+</section>
+<section class="login-form">
+    <form id="login-form" novalidate>
+        <label for="username">Benutzername</label>
+        <input type="text" id="username" required aria-required="true">
+        <span class="error" id="login-user-error" role="alert"></span>
+        <label for="password">Passwort</label>
+        <input type="password" id="password" required aria-required="true">
+        <span class="error" id="login-pass-error" role="alert"></span>
+        <label><input type="checkbox" id="remember"> Angemeldet bleiben</label>
+        <button type="submit">Einloggen</button>
+        <a href="#">Passwort vergessen?</a>
+        <span class="success" id="login-success" role="alert"></span>
+    </form>
+</section>
+
+<!-- FOOTER -->
+<div id="site-footer"></div>
+<script>
+const loginForm = document.getElementById('login-form');
+loginForm.addEventListener('submit', e => {
+    e.preventDefault();
+    let ok = true;
+    document.getElementById('login-user-error').textContent = '';
+    document.getElementById('login-pass-error').textContent = '';
+    if (!document.getElementById('username').value.trim()) {
+        document.getElementById('login-user-error').textContent = 'Bitte Benutzernamen eingeben.';
+        ok = false;
+    }
+    if (!document.getElementById('password').value.trim()) {
+        document.getElementById('login-pass-error').textContent = 'Bitte Passwort eingeben.';
+        ok = false;
+    }
+    if (ok) {
+        document.getElementById('login-success').textContent = 'Erfolgreich eingeloggt';
+        loginForm.reset();
+    }
+});
+</script>
+</body>
+</html>

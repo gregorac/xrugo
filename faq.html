@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xirugo AG – FAQ</title>
+    <meta name="description" content="Häufig gestellte Fragen zu unseren Hubtischen.">
+    <link rel="canonical" href="/faq.html">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/main.js" defer></script>
+    <script src="js/search.js" defer></script>
+</head>
+<body>
+<!-- HEADER -->
+<div id="site-header"></div>
+
+<!-- FAQ -->
+<section class="banner" style="background-image:url('assets/empack_1.webp')">
+    <h1>FAQ – Häufig gestellte Fragen</h1>
+</section>
+<section class="faq-list">
+    <article class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="answer1">Welche Traglast hat der Flachformhubtisch FE?</button>
+        <div id="answer1" class="faq-answer" role="region">
+            <p>Je nach Ausführung bis zu 2000&nbsp;kg.</p>
+        </div>
+    </article>
+    <article class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="answer2">Kann der Hubtisch ohne Grube direkt befahren werden?</button>
+        <div id="answer2" class="faq-answer" role="region">
+            <p>Ja, dank der flachen Bauweise ist keine Grube notwendig.</p>
+        </div>
+    </article>
+    <article class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="answer3">Welche Hubhöhen sind verfügbar?</button>
+        <div id="answer3" class="faq-answer" role="region">
+            <p>Übliche Hubhöhen liegen zwischen 600 und 1000&nbsp;mm.</p>
+        </div>
+    </article>
+    <article class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="answer4">Wie schnell sind die Lieferzeiten?</button>
+        <div id="answer4" class="faq-answer" role="region">
+            <p>Die Lieferzeit beträgt meist 6–8&nbsp;Wochen.</p>
+        </div>
+    </article>
+    <article class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="answer5">Bieten Sie Garantie auf Ihre Produkte?</button>
+        <div id="answer5" class="faq-answer" role="region">
+            <p>Ja, wir bieten 24&nbsp;Monate Garantie.</p>
+        </div>
+    </article>
+</section>
+
+<!-- FOOTER -->
+<div id="site-footer"></div>
+<script>
+document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+        const expanded = q.getAttribute('aria-expanded') === 'true';
+        document.querySelectorAll('.faq-question').forEach(el => {
+            el.setAttribute('aria-expanded', 'false');
+        });
+        document.querySelectorAll('.faq-answer').forEach(ans => ans.style.maxHeight = null);
+        if (!expanded) {
+            q.setAttribute('aria-expanded', 'true');
+            const answer = document.getElementById(q.getAttribute('aria-controls'));
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+    });
+});
+</script>
+</body>
+</html>
