@@ -4,3 +4,6 @@
   nav .hamburger { display: block; }
   #nav-list.show { display:flex; }
 }
+@media (max-width: 768px) {
+  .blog-list article { flex: 1 1 100%; }
+}
