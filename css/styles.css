@@ -4,7 +4,9 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 nav ul { list-style: none; display: flex; gap: 1rem; }
 nav .hamburger { display: none; }
 nav .logo {
-  height: 50px;
+  height: 40px;
+  width: auto;
+  display: block;
 }
 .search-wrapper { position: relative; }
 #search-suggestions { position: absolute; background: #fff; list-style:none; border:1px solid #ccc; width: 200px; }
