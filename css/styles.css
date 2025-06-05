@@ -82,3 +82,22 @@ header a {
 .blog-list h3 { margin-top: 0.5rem; color: #333; }
 .blog-list p { font-size: 0.875rem; }
 .blog-list a { display: inline-block; margin-top: 0.5rem; color: #003366; }
+
+/* Produktseite */
+.product-cards {
+  display: grid;
+  gap: 1rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+  grid-template-columns: 1fr;
+}
+.product-cards article {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  text-align: center;
+}
+
+.products-banner {
+  background-image: url('../assets/empack_1.webp');
+}

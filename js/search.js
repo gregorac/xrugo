@@ -35,9 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const results = pages.filter(p =>
-      p.title.toLowerCase().includes(q) || p.keywords.toLowerCase().includes(q)
-    );
+    const words = q.split(/\s+/).filter(Boolean);
+    const results = pages.filter(p => {
+      const haystack = `${p.title} ${p.keywords}`.toLowerCase();
+      return words.every(w => haystack.includes(w));
+    });
 
     suggestions.innerHTML = results
       .map(r => `<li role="option" data-url="${r.url}">${r.title}</li>`)
