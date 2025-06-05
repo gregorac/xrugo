@@ -1,61 +1,64 @@
-// Suchfunktion mit Seitennavigation
-document.addEventListener('DOMContentLoaded', () => {
+// search.js – Index-Aufbau, Vorschläge, Tastatursteuerung
+function initializeSearch() {
+  let pageIndex = [];
+  document.querySelectorAll('h1, h2, h3, p, li').forEach((elem, idx) => {
+    const section = elem.closest('section, main, article');
+    const sectionId = section ? (section.id || `section-${idx}`) : `section-${idx}`;
+    if (section && !section.id) section.id = sectionId;
+
+    const title = elem.tagName.match(/^H[1-3]$/) ? elem.textContent.trim() : null;
+    const text = elem.textContent.trim();
+    const url = `${window.location.pathname}#${sectionId}`;
+    pageIndex.push({ id: sectionId, title, text, url });
+  });
+
   const searchInput = document.getElementById('site-search');
   const suggestions = document.getElementById('search-suggestions');
-
-  const pages = [
-    { title: 'Startseite',       url: 'index.html',            keywords: 'flachform hubtische' },
-    { title: 'Produkte',         url: 'produkte.html',         keywords: 'hubtisch modelle fe f-ce' },
-    { title: 'Partner',          url: 'partner.html',          keywords: 'partnerfirmen' },
-    { title: 'Über uns',         url: 'ueber-uns.html',        keywords: 'geschichte philosophie werte tirugo' },
-    { title: 'Online Beratung',  url: 'online-beratung.html',  keywords: 'online beratung' },
-    { title: 'FAQ',              url: 'faq.html',              keywords: 'häufig gestellte fragen' },
-    { title: 'Login',            url: 'login.html',            keywords: 'login portal' }
-  ];
-
   let selectedIndex = -1;
 
-  function clearSuggestions() {
-    suggestions.innerHTML = '';
-    suggestions.setAttribute('aria-expanded', 'false');
-    selectedIndex = -1;
-  }
-
-  function updateSelection(items) {
-    items.forEach((el, i) => {
-      el.setAttribute('aria-selected', i === selectedIndex ? 'true' : 'false');
-    });
-  }
-
   searchInput.addEventListener('input', () => {
-    const q = searchInput.value.trim().toLowerCase();
-    if (!q) {
-      clearSuggestions();
-      return;
-    }
-
-    const results = pages.filter(p =>
-      p.title.toLowerCase().includes(q) || p.keywords.toLowerCase().includes(q)
-    );
-
-    suggestions.innerHTML = results
-      .map(r => `<li role="option" data-url="${r.url}">${r.title}</li>`)
-      .join('');
-
-    suggestions.querySelectorAll('li').forEach(li => {
-      li.addEventListener('click', () => {
-        window.location.href = li.dataset.url;
-        clearSuggestions();
+    const query = searchInput.value.trim().toLowerCase();
+    if (query.length > 0) {
+      const filtered = pageIndex.filter(item => {
+        return (item.title && item.title.toLowerCase().includes(query)) ||
+               item.text.toLowerCase().includes(query);
       });
-    });
+      const top = filtered.slice(0, 10);
 
-    suggestions.setAttribute('aria-expanded', results.length > 0 ? 'true' : 'false');
+      let html = '';
+      top.forEach(res => {
+        let snippet = '';
+        const idxTitle = res.title ? res.title.toLowerCase().indexOf(query) : -1;
+        const idxText = res.text.toLowerCase().indexOf(query);
+        if (idxTitle !== -1) {
+          snippet = res.title.substring(Math.max(0, idxTitle - 30), idxTitle + 30) + '...';
+        } else if (idxText !== -1) {
+          const start = Math.max(0, idxText - 30);
+          const end = Math.min(res.text.length, idxText + 30);
+          snippet = '...' + res.text.substring(start, end) + '...';
+        }
+        html += `<li role="option" data-url="${res.url}"><strong>${res.title || res.id}</strong> – ${snippet}</li>`;
+      });
+      if (top.length === 0) {
+        html = '<li role="option">Keine Ergebnisse gefunden</li>';
+      }
+      suggestions.innerHTML = html;
+      suggestions.setAttribute('aria-expanded', 'true');
+      suggestions.style.display = 'block';
+
+      suggestions.querySelectorAll('li').forEach(li => {
+        li.addEventListener('click', () => {
+          if (li.dataset.url) window.location.href = li.dataset.url;
+          clearSuggestions();
+        });
+      });
+    } else {
+      clearSuggestions();
+    }
   });
 
   searchInput.addEventListener('keydown', e => {
     const items = Array.from(suggestions.querySelectorAll('li'));
-    if (!items.length) return;
-
     switch (e.key) {
       case 'ArrowDown':
         e.preventDefault();
@@ -84,4 +87,22 @@ document.addEventListener('DOMContentLoaded', () => {
       clearSuggestions();
     }
   });
-});
+
+  function clearSuggestions() {
+    suggestions.innerHTML = '';
+    suggestions.setAttribute('aria-expanded', 'false');
+    suggestions.style.display = 'none';
+    selectedIndex = -1;
+  }
+
+  function updateSelection(items) {
+    items.forEach((el, i) => {
+      if (i === selectedIndex) {
+        el.setAttribute('aria-selected', 'true');
+        el.scrollIntoView({ block: 'nearest' });
+      } else {
+        el.setAttribute('aria-selected', 'false');
+      }
+    });
+  }
+}
