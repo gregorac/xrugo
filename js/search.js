@@ -1,7 +1,16 @@
 // Suchfunktion mit Seitennavigation
 document.addEventListener('DOMContentLoaded', () => {
-  const searchInput = document.getElementById('site-search');
-  const suggestions = document.getElementById('search-suggestions');
+  function waitForInput(callback) {
+    const input = document.getElementById('site-search');
+    const list = document.getElementById('search-suggestions');
+    if (input && list) {
+      callback(input, list);
+    } else {
+      setTimeout(() => waitForInput(callback), 50);
+    }
+  }
+
+  waitForInput((searchInput, suggestions) => {
 
   const pages = [
     { title: 'Startseite',       url: 'index.html',            keywords: 'flachform hubtische' },
@@ -91,4 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
       clearSuggestions();
     }
   });
+  });
 });
+
