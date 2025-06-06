@@ -4,6 +4,16 @@ img { max-width: 100%; height: auto; }
 nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem; }
 nav ul { list-style: none; display: flex; gap: 1rem; }
 nav .hamburger { display: none; }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+.nav-list { display: flex; gap: 30px; }
 .logo img {
   max-width: 150px;
   height: auto;
