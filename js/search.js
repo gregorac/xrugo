@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { title: 'Datenschutz',      url: 'datenschutz.html',     keywords: 'privacy policy' },
     { title: 'Online Beratung',  url: 'online-beratung.html',  keywords: 'online beratung' },
     { title: 'FAQ',              url: 'faq.html',              keywords: 'häufig gestellte fragen' },
+    { title: 'Service',          url: 'service.html',         keywords: 'service leistungen wartung' },
     { title: 'Login',            url: 'login.html',            keywords: 'login portal' },
     { title: 'PETEC',            url: 'petec.html',           keywords: 'partner petec' },
     { title: 'FlexLift',         url: 'flexlift.html',        keywords: 'partner flexlift' },
